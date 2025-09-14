@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil Futuristik Neon Network</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Background gradasi animasi */
+    body {
+      background: linear-gradient(270deg, #0f0c29, #302b63, #24243e);
+      background-size: 600% 600%;
+      animation: gradientShift 15s ease infinite;
+      overflow-x: hidden;
+      margin: 0;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    /* Efek neon */
+    .neon-text {
+      color: #00ffe5;
+      text-shadow: 0 0 10px #00ffe5, 0 0 20px #00ffe5, 0 0 40px #00ffe5;
+    }
+    .card-glass {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    /* Canvas partikel */
+    #particles {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body class="text-white font-sans">
+
+  <!-- Background Partikel -->
+  <canvas id="particles"></canvas>
+
+  <!-- Header -->
+  <header class="py-16 text-center">
+    <img src="images/FOTOSAYA.JPG" alt="Foto Profil" class="w-32 h-32 rounded-full mx-auto border-4 border-cyan-400 shadow-lg">
+    <h1 class="text-5xl font-bold neon-text mt-6">Nur Hafidhur Rohman</h1>
+    <p class="text-lg text-gray-300">Accounting | Designer Map Roblox | Photography</p>
+    <div class="mt-6 flex justify-center space-x-4">
+      <a href="hafidhur111@gmail.com" class="px-4 py-2 rounded-lg card-glass hover:bg-cyan-500 hover:text-black transition">Email</a>
+      <a href="https://wa.me/628995250108" target="_blank" class="px-4 py-2 rounded-lg card-glass hover:bg-cyan-500 hover:text-black transition">WhatsApp</a>
+      <a href="https://www.instagram.com/haf.id12/" target="_blank" class="px-4 py-2 rounded-lg card-glass hover:bg-cyan-500 hover:text-black transition">Instagram</a>
+    </div>
+  </header>
+
+  <!-- Tentang Saya -->
+  <section class="max-w-4xl mx-auto py-16 px-6 text-center">
+    <h2 class="text-3xl font-bold neon-text mb-6">Tentang Saya</h2>
+    <p class="text-gray-300 leading-relaxed">
+      Saya adalah mahasiswa Akuntansi yang bersemangat dalam menggabungkan kemampuan analitis dari studi saya dengan keahlian praktis dari berbagai bidang..
+    </p>
+  </section>
+
+  <!-- Keahlian -->
+  <section class="py-16 card-glass max-w-5xl mx-auto rounded-xl shadow-xl">
+    <h2 class="text-3xl font-bold text-center neon-text mb-10">Minat dan Keahlian Tambahan</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <div class="p-6 rounded-lg bg-black/30 border border-cyan-400">
+        <h3 class="font-semibold text-cyan-300">Investasi & Trading</h3>
+      </div>
+      <div class="p-6 rounded-lg bg-black/30 border border-cyan-400">
+        <h3 class="font-semibold text-cyan-300">Desain & Pengembangan Game</h3>
+      </div>
+      <div class="p-6 rounded-lg bg-black/30 border border-cyan-400">
+        <h3 class="font-semibold text-cyan-300">Musik & Kreativitas</h3>
+      </div>
+      <div class="p-6 rounded-lg bg-black/30 border border-cyan-400">
+        <h3 class="font-semibold text-cyan-300">Kemampuan Interpersonal</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section class="max-w-6xl mx-auto py-16 px-6">
+    <h2 class="text-3xl font-bold text-center neon-text mb-10">Portfolio</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="rounded-xl card-glass overflow-hidden shadow-lg">
+       <p class="text-gray-300 leading-relaxed">
+      Dah Itu Ja.
+    </p>
+  </section>
+
+  <!-- Kontak -->
+  <section class="text-center py-16 card-glass max-w-4xl mx-auto rounded-xl">
+    <h2 class="text-3xl font-bold neon-text mb-4">Kontak Saya</h2>
+    <p class="text-gray-300 mb-6">Tertarik untuk bekerja sama? Hubungi saya di bawah ini:</p>
+    <a href="https://wa.me/628995250108" class="px-6 py-3 rounded-lg bg-cyan-400 text-black font-semibold shadow-lg hover:bg-white transition">Chat</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-6 text-gray-400">
+    <p>© 2025 Nama Kamu | Dibuat dengan ⚡ Futuristic Neon Network Style</p>
+  </footer>
+
+  <!-- Script Partikel + Garis Neon -->
+  <script>
+    const canvas = document.getElementById("particles");
+    const ctx = canvas.getContext("2d");
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 3 + 1;
+        this.speedX = (Math.random() - 0.5) * 1;
+        this.speedY = (Math.random() - 0.5) * 1;
+        this.color = "rgba(0,255,229,0.7)";
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      particles = [];
+      for (let i = 0; i < 100; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    function connectParticles() {
+      for (let a = 0; a < particles.length; a++) {
+        for (let b = a; b < particles.length; b++) {
+          let dx = particles[a].x - particles[b].x;
+          let dy = particles[a].y - particles[b].y;
+          let distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < 120) {
+            ctx.beginPath();
+            ctx.strokeStyle = "rgba(0,255,229," + (1 - distance / 120) + ")";
+            ctx.lineWidth = 1;
+            ctx.moveTo(particles[a].x, particles[a].y);
+            ctx.lineTo(particles[b].x, particles[b].y);
+            ctx.stroke();
+            ctx.closePath();
+          }
+        }
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      connectParticles();
+      requestAnimationFrame(animate);
+    }
+
+    initParticles();
+    animate();
+  </script>
+
+</body>
+</html>
